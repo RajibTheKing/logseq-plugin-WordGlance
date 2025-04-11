@@ -1,0 +1,32 @@
+{
+    "name": "logseq-plugin-wordglance",
+    "version": "0.1.0",
+    "description": "Word memorization helper for Logseq",
+    "main": "dist/index.html",
+    "author": "Rajib Chandra Das",
+    "license": "MIT",
+    "scripts": {
+      "dev": "parcel ./index.html --public-url ./",
+      "build": "parcel build ./index.html --public-url ./"
+    },
+    "dependencies": {
+      "@logseq/libs": "0.0.14"
+    },
+    "devDependencies": {
+      "parcel": "^2.9.3",
+      "typescript": "^4.9.5"
+    },
+    "logseq": {
+      "id": "logseq-word-glance",
+      "title": "Word Glance",
+      "description": "Helps memorize German words with interactive flashcards",
+      "author": "Rajib Chandra Das",
+      "effect": true,
+      "spa": true
+    },
+    "targets": {
+      "default": {
+        "includeNodeModules": ["@logseq/libs"]
+      }
+    }
+  }
