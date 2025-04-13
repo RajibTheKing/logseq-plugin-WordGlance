@@ -89,6 +89,90 @@ export const germanWords: Word[] = [
         partOfSpeech: "noun",
         pronunciation: "/ˈʃtʁaːsə/",
         example: "Die Straße ist lang. (The street is long.)"
+    },
+    {
+        word: "Baum",
+        translation: "tree",
+        partOfSpeech: "noun",
+        pronunciation: "/baʊm/",
+        example: "Der Baum ist hoch. (The tree is tall.)"
+    },
+    {
+        word: "Blume",
+        translation: "flower",
+        partOfSpeech: "noun",
+        pronunciation: "/ˈbluːmə/",
+        example: "Die Blume ist rot. (The flower is red.)"
+    },
+    {
+        word: "Himmel",
+        translation: "sky",
+        partOfSpeech: "noun",
+        pronunciation: "/ˈhɪməl/",
+        example: "Der Himmel ist blau. (The sky is blue.)"
+    },
+    {
+        word: "Fenster",
+        translation: "window",
+        partOfSpeech: "noun",
+        pronunciation: "/ˈfɛnstɐ/",
+        example: "Das Fenster ist offen. (The window is open.)"
+    },
+    {
+        word: "Katze",
+        translation: "cat",
+        partOfSpeech: "noun",
+        pronunciation: "/ˈkat͡sə/",
+        example: "Die Katze schläft. (The cat is sleeping.)"
+    },
+    {
+        word: "Sonne",
+        translation: "sun",
+        partOfSpeech: "noun",
+        pronunciation: "/ˈzɔnə/",
+        example: "Die Sonne scheint. (The sun is shining.)"
+    },
+    {
+        word: "Zeit",
+        translation: "time",
+        partOfSpeech: "noun",
+        pronunciation: "/t͡saɪt/",
+        example: "Ich habe keine Zeit. (I have no time.)"
+    },
+    {
+        word: "Tür",
+        translation: "door",
+        partOfSpeech: "noun",
+        pronunciation: "/tyːɐ/",
+        example: "Die Tür ist geschlossen. (The door is closed.)"
+    },
+    {
+        word: "Apfel",
+        translation: "apple",
+        partOfSpeech: "noun",
+        pronunciation: "/ˈapfəl/",
+        example: "Der Apfel ist süß. (The apple is sweet.)"
+    },
+    {
+        word: "Fluss",
+        translation: "river",
+        partOfSpeech: "noun",
+        pronunciation: "/flʊs/",
+        example: "Der Fluss ist breit. (The river is wide.)"
+    },
+    {
+        word: "Musik",
+        translation: "music",
+        partOfSpeech: "noun",
+        pronunciation: "/muˈziːk/",
+        example: "Die Musik ist laut. (The music is loud.)"
+    },
+    {
+        word: "Brot",
+        translation: "bread",
+        partOfSpeech: "noun",
+        pronunciation: "/bʁoːt/",
+        example: "Das Brot ist frisch. (The bread is fresh.)"
     }
     // Add more words as needed
 ];

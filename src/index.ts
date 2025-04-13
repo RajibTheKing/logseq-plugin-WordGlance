@@ -3,7 +3,6 @@ import { germanWords, Word } from './words';
 
 type WordState = {
   currentWord: Word;
-  showingDetails: boolean;
   uuid: string;
 };
 
@@ -14,17 +13,31 @@ function getRandomWord(): Word {
 }
 
 function createWordView(state: WordState): string {
-  const { currentWord, showingDetails } = state;
+  const { currentWord } = state;
   return `
-    <div class="word-glance-container">
-      <div class="word-display">
-        <h2 class="word">${currentWord.word}</h2>
-        <div class="word-details">
-            <p><strong>Translation:</strong> ${currentWord.translation}</p>
-            <p><strong>Part of speech:</strong> ${currentWord.partOfSpeech}</p>
-            <p><strong>Pronunciation:</strong> ${currentWord.pronunciation}</p>
-            <p><strong>Example:</strong> ${currentWord.example}</p>
-        </div>
+    <div style="font-family: Arial,
+                sans-serif; display: flex;
+                justify-content: space-between;
+                align-items: center;
+                max-width: 300px;
+                padding: 10px;
+                background: #2c3e50;
+                border: 1px solid #4a6278;
+                border-radius: 8px;">
+      <div id="germanWord"
+          style="font-size: 1.2em;
+                  font-weight: bold;
+                  color: #ffffff;
+                  text-transform: capitalize;
+                  margin-right: 10px;">
+          ${currentWord.word}
+      </div>
+      <div id="englishMeaning"
+          style="font-size: 0.8em;
+                  color: #ecf0f1;
+                  font-style: italic;">
+          ${currentWord.translation}
+      </div>
     </div>
   `;
 }
@@ -39,16 +52,7 @@ async function updateWordView(uuid: string) {
 async function handleWordGlanceClick(uuid: string) {
   const state = wordStates.get(uuid);
   if (!state) return;
-
-  if (state.showingDetails) {
-    // Get new word
-    state.currentWord = getRandomWord();
-    state.showingDetails = false;
-  } else {
-    // Show details
-    state.showingDetails = true;
-  }
-
+  state.currentWord = getRandomWord();
   await updateWordView(uuid);
 }
 
@@ -66,14 +70,12 @@ async function main() {
     // Store initial state
     wordStates.set(uuid, {
       currentWord,
-      showingDetails: false,
       uuid
     });
 
     // Create initial view
     await logseq.Editor.updateBlock(uuid, createWordView({
       currentWord,
-      showingDetails: false,
       uuid
     }));
 
@@ -93,24 +95,6 @@ async function main() {
         await logseq.Editor.updateBlock(uuid, updatedContent);
       }
     }, 300);
-  });
-
-  // Handle clicks from existing blocks on load
-  logseq.App.onPageHeadActionsLoaded(async ({ uuid }) => {
-    const block = await logseq.Editor.getBlock(uuid);
-    if (block?.content?.includes('word-glance-container')) {
-      const match = block.content.match(/data-on-click="handleClick-(.*?)"/);
-      if (match && match[1]) {
-        const existingUuid = match[1];
-        if (!wordStates.has(existingUuid)) {
-          wordStates.set(existingUuid, {
-            currentWord: getRandomWord(),
-            showingDetails: false,
-            uuid: existingUuid
-          });
-        }
-      }
-    }
   });
 }
 
